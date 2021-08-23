@@ -29,4 +29,8 @@ def ipv4_packet(data):
     ttl, proto, src, target = struct.unpack('! 8x B B 2x 4s 4s', data[:20])
     return version, header_length, ttl, proto, ipv4(src), ipv4(target), data[header_length:]
 
+# Format ipv4 addresses properly
+def ipv4(addr):
+    return '.'.join(map(str, addr))
+
 main()
